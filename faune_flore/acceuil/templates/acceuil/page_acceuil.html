@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<title>Yana Faune & Flore</title>
-		<link rel="stylesheet" href = "{% static 'css/acceuil.css' %}">
+		<link rel="stylesheet" href = "{% static 'css/web.css' %}">
 		 <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Lacquer|Nothing+You+Could+Do|Sacramento|Sriracha|Yellowtail&display=swap" rel="stylesheet">
 		 <meta charset='UTF-8'>
 		 <link rel='icon' type='image.png' href='./images/favicon.png'/>
@@ -108,7 +108,7 @@
             </aside>
             <footer>
                 <ul>
-                    <li><a href='./conditUtil.html'> Condition d'utilisation </a></li>
+                    <li><a href="{% url "condition" %}"> Condition d'utilisation </a></li>
                     <li><a href='./confidentiel.html'> Confidentialité </a> </li>
                     <li><a href='./cookies.html'> Cookies </a></li>
                     <li><a href='./aPropos.html'> A propos </a></li>
