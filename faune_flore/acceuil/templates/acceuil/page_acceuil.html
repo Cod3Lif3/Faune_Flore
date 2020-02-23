@@ -1,17 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>Faune et Flore</title>
-	</head>
+		<title>Yana Faune & Flore</title>
+		<link rel="stylesheet" href = "{% static 'css/acceuil.css' %}">
+		 <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Lacquer|Nothing+You+Could+Do|Sacramento|Sriracha|Yellowtail&display=swap" rel="stylesheet">
+		 <meta charset='UTF-8'>
+		 <link rel='icon' type='image.png' href='./images/favicon.png'/>
+		</head>
 	<body>
-		<h1>Le titre du site </h1>
-		<input type=" search" name="q" id = "search_bar" placeholder=" Rechercher">
-		<button>Search</button>
-		<button>connexion</button>
-		<button>Advanced Research</button>
-		<button>Menu</button>
+		  <!-- Wrapper -->
+        <div class='wrapper'>
+            <header>
+                
+                <h1><a href='./acceuil.php'> Yana Faune & Flore </a></h1>
+                <ul id="logNav">
+                    <img src="./images/connection.png"/>
+                    <li><a href='./connection.php'> Connection </a></li>
+                </ul>
+                
+            </header>
+            <nav>
+                <div id="menuD">
+                    <ul>
+                        <li class= "deroulant">
+                            <a href="#"> Menu &ensp; </a>
+                            <ul class="sous">
+                                <li><a href='./listFaune.php'> Faune </a></li>
+                                <li><a href='./listFlore.php'> Flore </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div id="menuB">
+                    <form >
+                        <input id="hall-search" type="search" name="search"/>
+                        <input id="search-btn"  type="submit" value="Rechercher"/>
+                    </form>
+                </div>
+            </nav>
+            <section>
+                <h2> Bienvenue </h2>
+                <article class='info'>
+                    <div id='slideshow'>
+                        <!-- lien du tuto A.C: www.alsacreations.com/tuto/lire/1059-ID-slideshow-css3-animation-keyframes-automatique.html -->
+                        <ul id="sContent">
+                            <!---->
+                            <li class='slide'>
+                                <div class='page'>
+                                    
+                                    <h4>INFORMATION 1</h4>
+                                    <p> Olympus Corporation is established in more than a dozen countries and overpowers more than 10,000 heroes around the world. The agency offers these heroes enriching linguistic experiences by collaborating with all these heroes.<br><br> " [...] it's by working together that we will make this world better."<br> INFORMATION </p>
+                                </div>
+                            </li>
+                            <!---->
+                            <li  class='slide'>
+                                <div class='page'>
+                                    <h4>The Best Ally</h4>
+                                    <p>At Olympus Corporation, heroes also have the right to safety and comfort. More than 95% of the damages caused during missions are taken care of by the agency without forgetting the care of the employees injured during fights. </p>
+                                </div>
+                            </li>
+                            <!---->
+                            <li class='slide'>
+                                <div class='page'>
+                                    <h4>At the Heart of Innovation</h4>
+                                    <p>The agency has its own laboratories and works hard to provide all heroes with first rate equipment. The quirks are studied to offer costumes and weapons adapted to each.<br><br>Olympus Corporation works in cooperation with  greats scientist of I-Island. </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+            <aside>
+                <h4> Le site en quelques chiffres </h4>
+                
+                <article>
+                    <h4> Nombre d'animaux </h4>
+                    {% for post in sujet %}
+                    	{{ post }}
+                    {% endfor %}
+                    <!-- A DYNAMISER
+                    Requete SQL pour compter le nombre d'animaux présent dans la base de donneés.
+                    -->
+                </article>
+                
+                <article>
+                    <h4> Nombre de plante </h4>
+                    <!-- A DYNAMISER
+                    Requete SQL pour compter le nombre de plante présent dans la base de donneés.
+                    -->
+                </article>
+                
+                <article>
+                    <h4> Nombre de molecules </h4>
+                    <!-- A DYNAMISER
+                    Requete SQL pour compter le nombre d'éléments présent dans la base de donneés.
+                    -->
+                </article>
 
+                <article>
+                    <h4> Nombre d'entrées </h4>
+                    <!-- A DYNAMISER
+                    Requete SQL pour compter le nombre d'éléments présent dans la base de donneés.
+                    -->
+                </article>
 
-
-		<footer>Ici le pied de page	</footer>
+            </aside>
+            <footer>
+                <ul>
+                    <li><a href='./conditUtil.html'> Condition d'utilisation </a></li>
+                    <li><a href='./confidentiel.html'> Confidentialité </a> </li>
+                    <li><a href='./cookies.html'> Cookies </a></li>
+                    <li><a href='./aPropos.html'> A propos </a></li>
+                    <li><a href='./contacter.html'> Nous Contacter </a></li>
+                </ul>
+                <p> Les licences </p>
+            </footer>
+            
+        </div>
+	
 	</body>
 </html>
