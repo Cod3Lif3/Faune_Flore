@@ -13,10 +13,10 @@
         <div class='wrapper'>
             <header>
                 
-                <h1><a href='./acceuil.php'> Yana Faune & Flore </a></h1>
+                <h1><a href="{% url "page_acceuil" %}"> Yana Faune & Flore </a></h1>
                 <ul id="logNav">
                     <img src="./images/connection.png"/>
-                    <li><a href='./connection.php'> Connection </a></li>
+                    <li><a href="{% url "connection" %}"> Connection </a></li>
                 </ul>
                 
             </header>
@@ -26,8 +26,8 @@
                         <li class= "deroulant">
                             <a href="#"> Menu &ensp; </a>
                             <ul class="sous">
-                                <li><a href='./listFaune.php'> Faune </a></li>
-                                <li><a href='./listFlore.php'> Flore </a></li>
+                                <li><a href="{% url "listFaune" %}"> Faune </a></li>
+                                <li><a href="{% url "listFlore" %}"> Flore </a></li>
                             </ul>
                         </li>
                     </ul>
@@ -109,10 +109,10 @@
             <footer>
                 <ul>
                     <li><a href="{% url "condition" %}"> Condition d'utilisation </a></li>
-                    <li><a href='./confidentiel.html'> Confidentialité </a> </li>
-                    <li><a href='./cookies.html'> Cookies </a></li>
-                    <li><a href='./aPropos.html'> A propos </a></li>
-                    <li><a href='./contacter.html'> Nous Contacter </a></li>
+                    <li><a href="{% url "confident" %}"> Confidentialité </a> </li>
+                    <li><a href="{% url "cookies" %}"> Cookies </a></li>
+                    <li><a href="{% url "aPropos" %}"> A propos </a></li>
+                    <li><a href="{% url "contacter" %}"> Nous Contacter </a></li>
                 </ul>
                 <p> Les licences </p>
             </footer>

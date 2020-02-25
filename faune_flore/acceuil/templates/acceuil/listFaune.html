@@ -5,7 +5,8 @@
 	<!-- En tête -->
 	<head>
 		<!-- Fichiers CSS -->
-		<link rel="stylesheet" href = "{% static 'css/web.css' %}">
+		<link rel='stylesheet' href="{% static 'css/web.css' %}" media='screen' />
+
 		<!-- Fichiers Javascripts -->
 		<script type='text/javascript' src='./js/jquery-2.0.3.min.js'></script>
 		<script type='text/javascript' src='./js/web.js'></script>		
@@ -27,21 +28,20 @@
 		<!-- Wrapper -->
 		<div class='wrapper'>
             <header>
-                
-                <h1> Yana Faune & Flore </h1>
+
+                <h1><a href="{% url "page_acceuil" %}"  Yana Faune & Flore </h1>
                 <ul id="logNav">
-                    <img src="./images/connection.png"/>
-                    <li><a href='./connection.php'> Connection </a></li>
+                <img src="./images/connection.png"/>
+                <li><a href="{% url "connection" %}"> Connection </a></li>
                 </ul>
-                
             </header>
             <footer>
                 <ul>
-                    <li><a href="{% url "condition" %}"> Condition d'utilisation </a></li>
+                   	<li><a href="{% url "condition" %}"> Condition d'utilisation </a></li>
                     <li><a href="{% url "confident" %}"> Confidentialité </a> </li>
-                    <li><a href='./cookies.html'> Cookies </a></li>
-                    <li><a href='./aPropos.html'> A propos </a></li>
-                    <li><a href='./contacter.html'> Nous Contacter </a></li>
+                    <li><a href="{% url "cookies" %}"> Cookies </a></li>
+                    <li><a href="{% url "aPropos" %}"> A propos </a></li>
+                    <li><a href="{% url "contacter" %}"> Nous Contacter </a></li>
                 </ul>
                 <p> Les licences </p>
             </footer>

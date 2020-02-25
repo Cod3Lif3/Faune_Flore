@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+	<!-- En tête -->
+	<head>
+		<!-- Fichiers CSS -->
+		<link rel='stylesheet' type='text/css' href="{% static 'css/web.css'}"s media='screen' />
+
+		<!-- Fichiers Javascripts -->
+		<script type='text/javascript' src='./js/jquery-2.0.3.min.js'></script>
+		<script type='text/javascript' src='./js/web.js'></script>		
+
+		<!-- Encodage UTF8 pour les accents -->
+		<meta charset='UTF-8'>
+		
+		<!-- Icône de l'onglet -->
+		<link rel='icon' type='image/png' href='./images/favicon.png' />
+	
+		<!-- Titre de l'onglet -->
+		<title></title>
+	</head>
+	
+	
+	
+    <!-- Corps du document -->
+    <body>
+        <!-- Wrapper -->
+        <div class='wrapper'>
+            
+            <section>
+                <div id="after_submit"></div>
+                <h2>A contacter </h2>
+                <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                        <label class="required" for="name">Nom:</label><br />
+                        <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+                        <span id="name_validation" class="error_message"></span>
+                    </div>
+                    <div class="row">
+                        <label class="required" for="email">Email:</label><br />
+                        <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+                        <span id="email_validation" class="error_message"></span>
+                    </div>
+                    <div class="row">
+                        <label class="required" for="message">Message:</label><br />
+                        <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+                        <span id="message_validation" class="error_message"></span>
+                    </div>
+                    
+                    <input id="submit_button" type="submit" value="Envoyer" />
+                </form>
+            </section>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

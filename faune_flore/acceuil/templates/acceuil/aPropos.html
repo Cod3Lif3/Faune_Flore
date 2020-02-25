@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <!-- En tête -->
+    <head>
+        <!-- Fichiers CSS -->
+        <link rel='stylesheet' type='text/css' href="{% static 'css/web.css' %}" media='screen' />
+        
+        <!-- Fichiers Javascripts -->
+        <script type='text/javascript' src='./js/jquery-2.0.3.min.js'></script>
+        <script type='text/javascript' src='./js/web.js'></script>
+        
+        <!-- Encodage UTF8 pour les accents -->
+        <meta charset='UTF-8'>
+            
+            <!-- Icône de l'onglet -->
+            <link rel='icon' type='image/png' href='./images/favicon.png' />
+            
+            <!-- Titre de l'onglet -->
+            <title>Yana Faune & Flore</title>
+            </head>
+    
+    
+    
+    <!-- Corps du document -->
+    <body>
+        <!-- Wrapper -->
+        <div class='wrapper'>
+            <header>
+                <h1><a href="{% url "page_acceuil" %}">Yana Faune & Flore </h1>
+                <ul id="logNav">
+                    <img src="./images/connection.png"/>
+                    <li><a href="{% url "connection" %}"> Connection </a></li>
+                </ul>
+            </header>
+            <nav>
+                <div id="menuD">
+                    <ul>
+                        <li class= "deroulant">
+                            <a href="#"> Menu &ensp; </a>
+                            <ul class="sous">
+                                <li><a href="{% url "listFaune" %}"> Faune </a></li>
+                                <li><a href="{% url "listFlore" %}"> Flore </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div id="menuB">
+                    <form >
+                        <input id="hall-search" type="search" name="search"/>
+                        <input id="search-btn"  type="submit" value="Rechercher"/>
+                    </form>
+                </div>
+            </nav>
+            <section class='textInfo'>
+                <h2> A propos de nous </h2>
+                <article>
+                    <p>
+                    Nombre de Guyanais et Guyanaise ont été sensibilisés à cette relation avec les espèces sauvages et les plantes qui sont devenues, et demeurent toujours, un élément durable de la culture guyanaise.
+                    <br>
+                    <br>
+                    Une série d'information a été recenser grace à deux chimistes GENTA-JOUVES ET ESTEVEZ , qui offrent une description détaillée d’une diversité d’espèces sauvages et plantes sauvages, accompagnés de données chimiques.
+                    <br>
+                    <br>
+                    Nous voulons non seulement découvrir les secrets de la nature, mais aussi savoir le rôle que nous pouvons jouer pour la conserver.
+                    <br>
+                    <br>
+                    l'universite de guyane en collaboration avce ses deux chimistes on decider de mettre en place une mine de savoir sur la Faune et la flore du pays et au grand public guyanais
+                    <br>
+                    <br>
+                    Ceci est un projet mis à la disposition de tous pour connaître et découvrir dans la plus grande rigueur la biodiversité de guyanaise.
+                    <br>
+                    L'ambition du site est de présenter progressivement et exhaustivement toutes les espèces de différents groupes, de mettre à disposition certains documents d'aide à l'identification et à la connaissance de la biodiversité chimique locale.
+                    <br>
+                    <br>
+                    Une seule personne ne peut prétendre à un tel travail. Ce lieu est une collaboration entre la licence informatique de l'universite de Guayne et deux chimistes  ayant des connaissances reconnues dans divers domaines. Toutes les images et documents publiés sur le site seront donc vérifiés avant publication.
+                    <br>
+                    Un site participatif parce que tous les scientifiques (les botanistes et chimistes) on la possibilité nous adresser photos et informations  pour faire évoluer cette banque de connaissance. Le webmaster s'engage à citer tous les noms des auteurs des documents, images qui restent leur propriété. Les auteurs gardent tout droit de retrait de ceux ci.
+                    </p>
+                </article>
+            </section>
+            <footer>
+                <ul>
+                    <li><a href="{% url "condition" %}"> Condition d'utilisation </a></li>
+                    <li><a href="{% url "confident" %}"> Confidentialité </a> </li>
+                    <li><a href="{% url "cookies" %}"> Cookies </a></li>
+                    <li><a href="{% url "aPropos" %}"> A propos </a></li>
+                    <li><a href="{% url "contacter" %}"> Nous Contacter </a></li>
+                </ul>
+                <p> Les licences </p>
+            </footer>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
