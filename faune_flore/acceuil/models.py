@@ -14,7 +14,6 @@ class Sujet(models.Model):
 	environnement = models.TextField()
 	published_date = models.DateTimeField(default=timezone.now)
 
-
 def __str__(self):
 	return self.nom_commun
 
@@ -25,3 +24,4 @@ class Alimentation(models.Model):
 
 def __str__(self):
 	return self.id_alimentation
+

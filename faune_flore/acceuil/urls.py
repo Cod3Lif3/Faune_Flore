@@ -11,6 +11,6 @@ urlpatterns = [
 	path('listFlore/', views.listFlore, name='listFlore'),
 	path('cookies/',views.cookies, name='cookies'),
 	path('aPropos/',views.aPropos, name='aPropos'),
-	path('contacter/', views.contacter, name='contacter'),
+	path('contact/', views.contact, name='contact'),
 
 	]
