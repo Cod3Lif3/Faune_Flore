@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html>
 	<!-- En tête -->
 	<head>
 		<!-- Fichiers CSS -->
-		<link rel='stylesheet' type='text/css' href='./css/web.css' media='screen' />
+		<link rel='stylesheet' type='text/css' href="{% static 'css/web.css' %}" media='screen' />
 
 		<!-- Fichiers Javascripts -->
 		<script type='text/javascript' src='./js/jquery-2.0.3.min.js'></script>
@@ -17,7 +18,7 @@
 		<link rel='icon' type='image/png' href='./images/favicon.png' />
 	
 		<!-- Titre de l'onglet -->
-		<title></title>
+		<title>Yana Faune & Flore</title>
 	</head>
 	
 	
@@ -25,9 +26,26 @@
 	<!-- Corps du document -->
 	<body>
 		<!-- Wrapper -->
-		<div class='wrapper'>
+		<div class='wrapper'> 
+			<header>
+		 		<h1><a href="{% url 'page_acceuil' %}">Yana Faune & Flore</a></h1>
+		 	</header>
+		 	<section>
+		 		{% if error %}
+		 		<P><strong>Utilisateur inconnu ou mauvais mot de passe.</strong></P>
+		 		{% endif %}
 
-Test
+		 		{% if user.is_authenticated %}
+		 		Vous êtes connecté, en tant que {{ user.username }}<br/>
+		 		<a href="{% url "deconnexion" %}"> Deconnexion </a>
+		 		{% else %}
+		 		<form action="." method="post">
+		 			{% csrf_token %}
+		 			{{ form.as_p }}
+		 			<input type="submit" value="Se connecter"/>
+		 		</form>
+		 		{% endif %}
+		 	</section>
 
 		</div>
 	</body>

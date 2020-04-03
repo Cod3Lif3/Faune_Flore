@@ -120,3 +120,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOTT = os.path.join(BASE_DIR,'static')
+LOGIN_URL = '/connexion/'

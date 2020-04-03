@@ -15,7 +15,7 @@
 		<meta charset='UTF-8'>
 		
 		<!-- Icône de l'onglet -->
-		 <link rel='icon' type='image.png' href="{% static 'images/logo_site.png' %}"/>
+	 <link rel='icon' type='image.png' href="{% static 'images/logo_site.png' %}"/>
 	
 		<!-- Titre de l'onglet -->
 		<title></title>
@@ -29,46 +29,28 @@
 		<div class='wrapper'>
             <header>
 
-                 <a href="{% url "page_acceuil" %}"><img  id = "titre" src="{% static 'images/logo_site_redim.png' %}"></a>
+                <h1><a href="{% url "page_acceuil" %}"> Yana Faune & Flore </a></h1>
                 <ul id="logNav">
                 <img src="./images/connection.png"/>
-                	{% if user.is_authenticated %}
-                    <h2><li>{{ user.username }}</li></h2>
+                 {% if user.is_authenticated %}
+                    <li>{{ user.username }}</li>
                     <li><a href="{% url "deconnexion" %}">Deconnexion</a></li>
                     {% else %}
                     <li><a href="{% url "connection" %}"> Connexion </a></li>
                     {% endif %}
                 </ul>
             </header>
-             <nav>
-                <div id="menuD">
-                    <ul>
-                        <li class= "deroulant">
-                            <a href="."> Menu &ensp; </a>
-                            <ul class="sous">
-                                 <li><a href="{% url 'page_acceuil' %}">Accueil</a></li>
-                                <li><a href="{% url "listFaune" %}"> Faune </a></li>
-                                <li><a href="{% url "listFlore" %}"> Flore </a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div id="menuB">
-                    <form >
-                        <input id="hall-search" type="search" name="search"/>
-                        <input id="search-btn"  type="submit" value="Rechercher"/>
-                    </form>
-                </div>
-            </nav>
             
             <section>
-            {% for sujet in sujet %}	
-            <a href="{% url 'sujet_edit' pk=sujet.pk %}"> Edit</a>
-            	<a id= "new_sub" href=" {% url 'sujet_new' %}"> Ajouter un sujet </a>
-            	<h2><a href="{% url 'sujet_detail' pk=sujet.pk %}">{{ sujet.nom_commun }}</a></h2>
+            {% if sujet.published_date %}	
             	{{ sujet.published_date }}
-            	{% endfor %}
-            	
+            {% endif %}
+            	<h2>{{ sujet.nom_commun }}</h2>
+            	<h3>{{ sujet.nom_scientifique }}</h3>
+            	<h4>{{ sujet.nom_espece }}</h4>
+            	<p>{{ sujet.description|linebreaksbr }}</p>
+            	<p>{{ sujet.environnement|linebreaksbr }}</p>
+            
             </section>
             
             <footer>

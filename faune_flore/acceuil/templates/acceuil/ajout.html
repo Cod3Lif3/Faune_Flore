@@ -1,48 +1,36 @@
 {% load static %}
-<!DOCTYPE html>
-
 <html>
-	<!-- En tête -->
 	<head>
-		<!-- Fichiers CSS -->
-		<link rel='stylesheet' href="{% static 'css/web.css' %}" media='screen' />
-
-		<!-- Encodage UTF8 pour les accents -->
-		<meta charset='UTF-8'>
-		
-		<!-- Icône de l'onglet -->
-		 <link rel='icon' type='image.png' href="{% static 'images/logo_site.png' %}"/>
-	
-		<!-- Titre de l'onglet -->
-		<title></title>
+		<title>Yana Faune & Flore</title>
+		<link rel="stylesheet" href = "{% static 'css/web.css' %}">
+		 <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Lacquer|Nothing+You+Could+Do|Sacramento|Sriracha|Yellowtail&display=swap" rel="stylesheet">
+		 <meta charset='UTF-8'>
+		  <link rel='icon' type='image.png' href="{% static 'images/logo_site.png' %}"/>
 	</head>
-	
-	
-	
-    <!-- Corps du document -->
+	 <!-- Corps du document -->
     <body>
         <!-- Wrapper -->
         <div class='wrapper'>
         	 <header>
-                <h1><a href="{% url "page_acceuil" %}">Yana Faune & Flore </h1>
+
+                <h1><a href="{% url 'page_acceuil' %}">Yana Faune & Flore" </a></h1>
                 <ul id="logNav">
-                    <!--img src="./images/connection.png"/-->
-                     {% if user.is_authenticated %}
+                <img src="./images/connection.png"/>
+                {% if user.is_authenticated %}
                     <h2><li>{{ user.username }}</li></h2>
                     <li><a href="{% url "deconnexion" %}">Deconnexion</a></li>
                     {% else %}
                     <li><a href="{% url "connection" %}"> Connexion </a></li>
                     {% endif %}
-                   
                 </ul>
-            </header>
-        	<nav>
+            </header>   
+           <nav>
                 <div id="menuD">
                     <ul>
                         <li class= "deroulant">
-                            <a href="#"> Menu &ensp; </a>
+                            <a href="."> Menu &ensp; </a>
                             <ul class="sous">
-                                <li><a href="{%url 'page_acceuil' %}"> Acceuil </a></li>
+                                 <li><a href="{% url 'page_acceuil' %}">Accueil</a></li>
                                 <li><a href="{% url "listFaune" %}"> Faune </a></li>
                                 <li><a href="{% url "listFlore" %}"> Flore </a></li>
                             </ul>
@@ -58,10 +46,7 @@
             </nav>
             
             <section>
-                {% if envoi %} 
-                	Votre message a bien été envoyé !
-               	 {% endif %}
-                <form action="{% url "contact" %}" method="post">
+                <form action="{% url "sujet_new" %}" method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <input type="submit" value="Submit"/>
@@ -72,14 +57,3 @@
         </div>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

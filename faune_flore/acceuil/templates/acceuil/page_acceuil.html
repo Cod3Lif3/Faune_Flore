@@ -6,17 +6,22 @@
 		<link rel="stylesheet" href = "{% static 'css/web.css' %}">
 		 <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Lacquer|Nothing+You+Could+Do|Sacramento|Sriracha|Yellowtail&display=swap" rel="stylesheet">
 		 <meta charset='UTF-8'>
-		 <link rel='icon' type='image.png' href='./images/favicon.png'/>
+		 <link rel='icon' type='image.png' href="{% static 'images/logo_site.png' %}"/>
 		</head>
 	<body>
 		  <!-- Wrapper -->
         <div class='wrapper'>
             <header>
                 
-                <h1><a href="{% url "page_acceuil" %}"> Yana Faune & Flore </a></h1>
+                <a href="{% url "page_acceuil" %}"><img  id = "titre" src="{% static 'images/logo_site_redim.png' %}"></a>
                 <ul id="logNav">
-                    <img src="./images/connection.png"/>
-                    <li><a href="{% url "connection" %}"> Connection </a></li>
+                    <!--img src="./images/connection.png"/-->
+                    {% if user.is_authenticated %}
+                    <h2><li>{{ user.username }}</li></h2>
+                    <li><a href="{% url "deconnexion" %}">Deconnexion</a></li>
+                    {% else %}
+                    <li><a href="{% url "connection" %}"> Connexion </a></li>
+                    {% endif %}
                 </ul>
                 
             </header>
@@ -24,8 +29,9 @@
                 <div id="menuD">
                     <ul>
                         <li class= "deroulant">
-                            <a href="#"> Menu &ensp; </a>
+                            <a href="."> Menu &ensp; </a>
                             <ul class="sous">
+                                 <li><a href="{% url 'page_acceuil' %}">Accueil</a></li>
                                 <li><a href="{% url "listFaune" %}"> Faune </a></li>
                                 <li><a href="{% url "listFlore" %}"> Flore </a></li>
                             </ul>
@@ -75,13 +81,7 @@
                 <h4> Le site en quelques chiffres </h4>
                 
                 <article>
-                    <h4> Nombre d'animaux </h4>
-                    {% for post in sujet %}
-                    	{{ post }}
-                    {% endfor %}
-                    <!-- A DYNAMISER
-                    Requete SQL pour compter le nombre d'animaux présent dans la base de donneés.
-                    -->
+                    <h4> Nombre d'animaux : {{sujet}}</h4>
                 </article>
                 
                 <article>

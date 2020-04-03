@@ -15,7 +15,7 @@
         <meta charset='UTF-8'>
             
             <!-- Icône de l'onglet -->
-            <link rel='icon' type='image/png' href='./images/favicon.png' />
+             <link rel='icon' type='image.png' href="{% static 'images/logo_site.png' %}"/>
             
             <!-- Titre de l'onglet -->
             <title>Yana Faune & Flore</title>
@@ -40,6 +40,7 @@
                         <li class= "deroulant">
                             <a href="#"> Menu &ensp; </a>
                             <ul class="sous">
+                                <li><a href="{%url 'page_acceuil' %}"> Acceuil </a></li>
                                 <li><a href="{% url "listFaune" %}"> Faune </a></li>
                                 <li><a href="{% url "listFlore" %}"> Flore </a></li>
                             </ul>
@@ -86,7 +87,7 @@
                     <li><a href="{% url "confident" %}"> Confidentialité </a> </li>
                     <li><a href="{% url "cookies" %}"> Cookies </a></li>
                     <li><a href="{% url "aPropos" %}"> A propos </a></li>
-                    <li><a href="{% url "contacter" %}"> Nous Contacter </a></li>
+                    <li><a href="{% url "contact" %}"> Nous Contacter </a></li>
                 </ul>
                 <p> Les licences </p>
             </footer>
