@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
 	
 	path('', views.page_acceuil, name='page_acceuil'),
@@ -16,5 +17,7 @@ urlpatterns = [
 	path('post/<pk>/', views.sujet_detail, name='sujet_detail'),
 	path('deconnexion/', views.deconnexion, name='deconnexion'),
 	path('post/<pk>/edit/', views.sujet_new, name='sujet_edit'),
+	path('upload-csv/', views.sujet_upload, name='sujet_upload'),
+	path('plante/<pk>/', views.plante_detail, name='plante_detail')
 
 	]

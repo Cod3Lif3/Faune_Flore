@@ -338,7 +338,7 @@ footer {
     background: url("../images/transparent_4.png");
     background-size : cover;
     
-    position: absolute;
+    position: relative;
     bottom : 0px;
     
     width : 100%;

@@ -32,7 +32,6 @@
                             <a href="."> Menu &ensp; </a>
                             <ul class="sous">
                                  <li><a href="{% url 'page_acceuil' %}">Accueil</a></li>
-                                <li><a href="{% url "listFaune" %}"> Faune </a></li>
                                 <li><a href="{% url "listFlore" %}"> Flore </a></li>
                             </ul>
                         </li>
@@ -81,23 +80,7 @@
                 <h4> Le site en quelques chiffres </h4>
                 
                 <article>
-                    <h4> Nombre d'animaux : {{sujet}}</h4>
-                </article>
-                
-                <article>
-                    <h4> Nombre de plante </h4>
-                    <!-- A DYNAMISER
-                    Requete SQL pour compter le nombre de plante présent dans la base de donneés.
-                    -->
-                </article>
-                
-                <article>
-                    <h4> Nombre de molecules </h4>
-                    <!-- A DYNAMISER
-                    Requete SQL pour compter le nombre d'éléments présent dans la base de donneés.
-                    -->
-                </article>
-
+                    <h4> Nombre de plante : {{plante}} </h4>
                 <article>
                     <h4> Nombre d'entrées </h4>
                     <!-- A DYNAMISER

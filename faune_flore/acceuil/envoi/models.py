@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Sujet(models.Model):
-	id_sujet = models.CharField(max_length=1000, default='null', primary_key=True)#FA/FL+4L nom famille+3L environnement
+	#id_sujet = models.CharField(max_length=1000)#FA/FL+4L nom famille+3L environnement
 	nom_commun = models.CharField(max_length=300)
 	published_date = models.DateTimeField(default=timezone.now)
 
@@ -28,16 +28,7 @@ class User(models.Model):
 	signature = models.TextField(blank = True)
 	inscrit_newsletter = models.BooleanField(default=False)
 
-def __str__(self):
+	def __str__(self):
 		return "User de {0}".format(self.user.username)
-
-class Plante(models.Model):
-	InChIKey = models.CharField(max_length=1000)
-	nom = models.CharField(max_length=300,primary_key=True)	
-	published_date = models.DateTimeField(default=timezone.now)
-
-def __str__(self):
-	return self.nom
-
-	
+		
 

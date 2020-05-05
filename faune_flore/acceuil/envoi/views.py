@@ -2,7 +2,6 @@ import csv,io
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from .models import Sujet
-from .models import Plante
 from .form import ContactForm
 from .form import SujetForm
 from .form import ConnexionForm
@@ -10,12 +9,10 @@ from django.contrib.auth import logout,authenticate,login
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.db.models import Count
-from django.core.paginator import Paginator
 
 def page_acceuil(request):
 	sujet = Sujet.objects.all().count()
-	plante = Plante.objects.all().count()
-	return render(request,'acceuil/page_acceuil.html',{'sujet' : sujet,'plante' : plante})
+	return render(request,'acceuil/page_acceuil.html',{'sujet' : sujet})
 
 def condition(request):
 	return render(request,'acceuil/conditUtil.html')
@@ -47,11 +44,7 @@ def listFaune(request):
 	return render(request,'acceuil/listFaune.html', {'sujet': sujet})
 
 def listFlore(request):
-	plante_list = Plante.objects.all()
-	paginator = Paginator(plante_list,10)
-	page = request.GET.get('page')
-	plante = paginator.get_page(page)
-	return render(request,'acceuil/listFlore.html', {'plante' : plante})
+	return render(request,'acceuil/listFlore.html')
 
 def cookies(request):
 	return render(request,'acceuil/cookies.html')
@@ -84,10 +77,6 @@ def sujet_new(request,pk):
 def sujet_detail(request, pk):
 	sujet = get_object_or_404(Sujet, pk=pk)
 	return render(request, 'acceuil/sujet_detail.html', {'sujet': sujet})
-
-def plante_detail(request, pk):
-	plante = get_object_or_404(Plante, pk=pk)
-	return render(request, 'acceuil/plante_detail.html', {'plante' : plante})
 # Create your views here.
 
 def deconnexion(request):
@@ -110,11 +99,10 @@ def sujet_edit(request,pk):
 def sujet_upload(request):
 
 	template = "acceuil/upload.html"
-	plante = Plante.objects.all()
+	sujet = Sujet.objects.all()
 	with open('C:\\Users\\rouan\\OneDrive\\Bureau\\Projet\\Full_DNP_YE2.csv') as csvfile:
 		spamreader = csv.reader(csvfile,delimiter=';')
 		for column in spamreader:
-			_, created = Plante.objects.update_or_create(
-        	    InChIKey = column[1],
-        	    nom=column[0]
+			_, created = Sujet.objects.update_or_create(
+        	    nom_commun=column[0]
             	)

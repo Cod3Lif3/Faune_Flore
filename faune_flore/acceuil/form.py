@@ -11,7 +11,7 @@ class SujetForm(forms.ModelForm):
 
 	class Meta:
 		model = Sujet
-		fields = ('id_sujet','nom_commun','description','id_alimentation')
+		fields = ('id_sujet','nom_commun')
 		
 class ConnexionForm(forms.Form):
 	username = forms.CharField(label="Nom d'utilisateur", max_length=30)
