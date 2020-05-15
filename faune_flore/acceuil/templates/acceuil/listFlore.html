@@ -65,6 +65,7 @@
                 <h2>Listes des plantes</h2><br>
                 {% for plante in plante %}    
                     <h2><a href="{% url 'plante_detail' pk=plante.pk %}">{{ plante.nom }}</a></h2>
+                    {{ plante.molecule_name }}
                     {{ plante.published_date }}
                 {% endfor %}
 

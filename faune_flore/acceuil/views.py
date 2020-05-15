@@ -1,21 +1,21 @@
 import csv,io
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
-from .models import Sujet
 from .models import Plante
 from .form import ContactForm
-from .form import SujetForm
+from .form import PlanteForm
 from .form import ConnexionForm
 from django.contrib.auth import logout,authenticate,login
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.db.models import Count
+from django.db import models
 from django.core.paginator import Paginator
 
 def page_acceuil(request):
-	sujet = Sujet.objects.all().count()
+	
 	plante = Plante.objects.all().count()
-	return render(request,'acceuil/page_acceuil.html',{'sujet' : sujet,'plante' : plante})
+	return render(request,'acceuil/page_acceuil.html',{'plante' : plante})
 
 def condition(request):
 	return render(request,'acceuil/conditUtil.html')
@@ -42,9 +42,8 @@ def connection(request):
 	return render(request,'acceuil/connection.html', locals())
 
 def listFaune(request):
-	sujet = Sujet.objects.all()
 	paginate_by = 10
-	return render(request,'acceuil/listFaune.html', {'sujet': sujet})
+	return render(request,'acceuil/listFaune.html')
 
 def listFlore(request):
 	plante_list = Plante.objects.all()
@@ -70,20 +69,17 @@ def contact(request):
 	return render(request,'acceuil/contacter.html',locals())
 
 @login_required
-def sujet_new(request,pk):
+def plante_new(request,pk):
 	if request.method == "POST":
-		form = SujetForm(request.POST)
+		form = PlanteForm(request.POST)
 		if form.is_valid():
-			sujet = form.save(commit=False)
-			sujet.save()
-			return redirect('sujet_detail',pk=sujet.pk)
+			plante = form.save(commit=False)
+			plante.save()
+			return redirect('plante_detail',pk=plante.pk)
 	else:
-		form = SujetForm()
+		form = PlanteForm()
 	return	render(request,'acceuil/ajout.html',{'form': form})
 
-def sujet_detail(request, pk):
-	sujet = get_object_or_404(Sujet, pk=pk)
-	return render(request, 'acceuil/sujet_detail.html', {'sujet': sujet})
 
 def plante_detail(request, pk):
 	plante = get_object_or_404(Plante, pk=pk)
@@ -94,27 +90,16 @@ def deconnexion(request):
 	logout(request)
 	return redirect(reverse(connection))
 
-def sujet_edit(request,pk):
-	sujet = get_object_or_404(Sujet, pk=pk)
-	if request.method == "POST":
-		form = PostForm(request.POST, instance=post)
-		if form.is_valid():
-			sujet = form.save(commit=False)
-			sujet.published_date = timezone.now()
-			sujet.save()
-			return redirect('sujet_detail', pk=sujet.pk)
-	else:
-		form = SujetForm(instance=post)
-	return render(request, 'acceuil/sujet_detail.html',{'form': form})
 
 def sujet_upload(request):
 
 	template = "acceuil/upload.html"
 	plante = Plante.objects.all()
-	with open('C:\\Users\\rouan\\OneDrive\\Bureau\\Projet\\Full_DNP_YE2.csv') as csvfile:
+	with open('C:\\Users\\rouan\\OneDrive\\Bureau\\Projet\\csv_molecule2.csv') as csvfile:
 		spamreader = csv.reader(csvfile,delimiter=';')
 		for column in spamreader:
 			_, created = Plante.objects.update_or_create(
         	    InChIKey = column[1],
-        	    nom=column[0]
+        	    nom=column[9],
+        	    molecule_name = column[3]
             	)

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Sujet
+from .models import Plante
 
 class ContactForm(forms.Form):
 	sujet = forms.CharField(max_length=100)
@@ -7,11 +7,11 @@ class ContactForm(forms.Form):
 	mail = forms.EmailField(label="Votre adresse e-mail")
 	renvoi = forms.BooleanField(help_text="Cochez si vous souhaitez obtenir une copie du mail envoyé.",required=False)
 
-class SujetForm(forms.ModelForm):
+class PlanteForm(forms.ModelForm):
 
 	class Meta:
-		model = Sujet
-		fields = ('id_sujet','nom_commun')
+		model = Plante
+		fields = ('InChIKey','nom','molecule_name')
 		
 class ConnexionForm(forms.Form):
 	username = forms.CharField(label="Nom d'utilisateur", max_length=30)

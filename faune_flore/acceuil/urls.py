@@ -13,10 +13,8 @@ urlpatterns = [
 	path('cookies/',views.cookies, name='cookies'),
 	path('aPropos/',views.aPropos, name='aPropos'),
 	path('contact/', views.contact, name='contact'),
-	path('sujet/new/',views.sujet_new, name='sujet_new'),
-	path('post/<pk>/', views.sujet_detail, name='sujet_detail'),
+	path('plante/new/',views.plante_new, name='plante_new'),
 	path('deconnexion/', views.deconnexion, name='deconnexion'),
-	path('post/<pk>/edit/', views.sujet_new, name='sujet_edit'),
 	path('upload-csv/', views.sujet_upload, name='sujet_upload'),
 	path('plante/<pk>/', views.plante_detail, name='plante_detail')
 
