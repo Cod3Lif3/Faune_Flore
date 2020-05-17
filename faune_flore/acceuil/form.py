@@ -1,5 +1,5 @@
 from django import forms
-from .models import Plante
+from .models import Species
 
 class ContactForm(forms.Form):
 	sujet = forms.CharField(max_length=100)
@@ -10,8 +10,8 @@ class ContactForm(forms.Form):
 class PlanteForm(forms.ModelForm):
 
 	class Meta:
-		model = Plante
-		fields = ('InChIKey','nom','molecule_name')
+		model = Species
+		fields = ('speciesName','moleculeName')
 		
 class ConnexionForm(forms.Form):
 	username = forms.CharField(label="Nom d'utilisateur", max_length=30)

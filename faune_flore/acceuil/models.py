@@ -13,11 +13,12 @@ class User(models.Model):
 	def __str__(self):
 		return "User de {0}".format(self.user.username)
 
-class Plante(models.Model):
-	InChIKey = models.CharField(max_length=1000)
-	nom = models.CharField(max_length=1000)	
-	molecule_name = models.CharField(max_length=1000,primary_key=True)
-	published_date = models.DateTimeField(default=timezone.now)
-	def __str__(self):
-		return self.nom
+class Species(models.Model):
+		speciesName = models.CharField(max_length=1000)
+		moleculeName = models.CharField(max_length = 1000)
+		publishedDate = models.DateTimeField( default=timezone.now)
+		
+		def __str__(self):
+			return self.speciesName
+	
 

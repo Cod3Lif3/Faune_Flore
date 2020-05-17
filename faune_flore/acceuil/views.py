@@ -1,7 +1,7 @@
 import csv,io
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
-from .models import Plante
+from .models import Species 
 from .form import ContactForm
 from .form import PlanteForm
 from .form import ConnexionForm
@@ -12,16 +12,21 @@ from django.db.models import Count
 from django.db import models
 from django.core.paginator import Paginator
 
-def page_acceuil(request):
-	
-	plante = Plante.objects.all().count()
-	return render(request,'acceuil/page_acceuil.html',{'plante' : plante})
+def accueil(request):
+    species = Species.objects.all().count()
+    return render(request, 'acceuil/accueil.html',{'species' : species})
 
 def condition(request):
 	return render(request,'acceuil/conditUtil.html')
 
 def confident(request):
 	return render(request,'acceuil/confidentiel.html')
+
+def cookies(request):
+	return render(request,'acceuil/cookies.html')
+
+def aPropos(request):
+	return render(request,'acceuil/aPropos.html')
 
 def connection(request):
 	error = False
@@ -41,22 +46,14 @@ def connection(request):
 			form=ConnexionForm()
 	return render(request,'acceuil/connection.html', locals())
 
-def listFaune(request):
-	paginate_by = 10
-	return render(request,'acceuil/listFaune.html')
+def speciesList(request):
+    species_list = Species.objects.all()
+    paginator = Paginator(species_list, 50)
 
-def listFlore(request):
-	plante_list = Plante.objects.all()
-	paginator = Paginator(plante_list,10)
-	page = request.GET.get('page')
-	plante = paginator.get_page(page)
-	return render(request,'acceuil/listFlore.html', {'plante' : plante})
+    page = request.GET.get('page')
+    species = paginator.get_page(page)
+    return render(request, 'acceuil/speciesList.html',{'species' : species})
 
-def cookies(request):
-	return render(request,'acceuil/cookies.html')
-
-def aPropos(request):
-	return render(request,'acceuil/aPropos.html')
 
 def contact(request):
 	form = ContactForm(request.POST or None)
@@ -73,33 +70,32 @@ def plante_new(request,pk):
 	if request.method == "POST":
 		form = PlanteForm(request.POST)
 		if form.is_valid():
-			plante = form.save(commit=False)
-			plante.save()
-			return redirect('plante_detail',pk=plante.pk)
+			species = form.save(commit=False)
+			species.save()
+			return redirect('species',pk=species.pk)
 	else:
 		form = PlanteForm()
 	return	render(request,'acceuil/ajout.html',{'form': form})
 
 
-def plante_detail(request, pk):
-	plante = get_object_or_404(Plante, pk=pk)
-	return render(request, 'acceuil/plante_detail.html', {'plante' : plante})
-# Create your views here.
+def species(request, pk):
+    species = get_object_or_404(Species , pk=pk)
+    return render(request, 'acceuil/species.html',{'species': species})
 
 def deconnexion(request):
 	logout(request)
 	return redirect(reverse(connection))
 
 
-def sujet_upload(request):
 
-	template = "acceuil/upload.html"
-	plante = Plante.objects.all()
-	with open('C:\\Users\\rouan\\OneDrive\\Bureau\\Projet\\csv_molecule2.csv') as csvfile:
-		spamreader = csv.reader(csvfile,delimiter=';')
-		for column in spamreader:
-			_, created = Plante.objects.update_or_create(
-        	    InChIKey = column[1],
-        	    nom=column[9],
-        	    molecule_name = column[3]
+def upload(request):
+    template = "acceuil/upload.html"
+    species = Species.objects.all()
+    with open('C:\\Users\\rouan\\OneDrive\\Bureau\\Projet\\csv_molecule2.csv') as csvfile:
+        spamreader = csv.reader(csvfile,delimiter=';')
+        for column in spamreader:
+            _, created = Species.objects.update_or_create(
+               speciesName = column[9],
+                moleculeName = column[3]
             	)
+    return render(request, template,{})

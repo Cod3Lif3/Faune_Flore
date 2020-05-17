@@ -1,0 +1,11 @@
+﻿{% extends 'acceuil/base.html' %}
+    {% block content %}
+<section>
+    {% if species.published_date %}
+    {{ species.published_date }}
+    {% endif %}
+    <h2>{{ species.speciesName}}</h2>
+    <h3><a href="{% url 'molecule' pk=molecule.pk %}"{{ species.moleculeName}}</h3>
+
+</section>
+    {% endblock %}
