@@ -4,8 +4,6 @@ from django.shortcuts import redirect
 from .models import Molecule
 from .form import ContactForm
 from .form import PlanteForm
-from .form import ConnexionForm
-from .form import CreationForm
 from django.contrib.auth import logout,authenticate,login
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -13,6 +11,10 @@ from django.db.models import Count
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+from django.views.generic import TemplateView
+from django.contrib.auth import authenticate, login, logout
+from django.http import *
+from django.conf import settings
 
 def accueil(request):
     molecules = Molecule.objects.all().count()
@@ -29,28 +31,6 @@ def moleculesList(request):
 def molecule(request, pk):
     molecules = get_object_or_404(Molecule, pk = pk)
     return render(request, 'acceuil/molecule.html', {'molecules' : molecules})
-
-def connexion(request):
-    error = False
-    
-    if request.method == "POST":
-        form = ConnexionForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            user = authenticate(username = username, password=password)
-            if user :
-                login(request, user)
-                return render(request, 'acceuil/accueil.html')
-            else :
-                error = True
-        else :
-            form=ConnexionForm()
-    return render(request, 'acceuil/connection.html',locals())
-
-def deconnexion(request):
-    logout(request)
-    return redirect(reverse(connexion))
 
 def upload(request):
     template = "acceuil/upload.html"
@@ -72,15 +52,5 @@ def upload(request):
             	)
     return render(request, template,{})
 
-def creation(request):
-    if request.method == "POST":
-       form = CreationForm(request.POST)
-       if form.is_valid():
-           user = form.save(commit=False)
-           user.save()
-           return redirect('accueil')
-    else:
-        form = CreationForm()
 
-    return render(request, 'acceuil/creation.html', {'form' : form})
-    
+
