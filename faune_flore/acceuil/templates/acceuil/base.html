@@ -5,8 +5,10 @@
 <!-- En tête -->
 <head>
     <!-- Fichiers CSS -->
-    <link rel='stylesheet' type='text/css' href="{% static 'css/web.css' %}" media='screen' />
-
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/web.css' %}">
 
     <!-- Encodage UTF8 pour les accents -->
     <meta charset='UTF-8'>
@@ -53,7 +55,7 @@
                 <h4><a href="{% url "logout" %}">Deconnexion</a></h4>
                 {% else %}
                 <h4><a href="{% url "login" %}">Sign In </a></h4>
-                <h4><a href="{% url "login" %}">Sign Up</a></h4>
+                <h4><a href="{% url "register" %}">Sign Up</a></h4>
                 {% endif %}
             </div>
             
