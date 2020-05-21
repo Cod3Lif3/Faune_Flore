@@ -1,7 +1,9 @@
 ﻿{% extends 'acceuil/base.html' %}
     {% block content %}
     <section class='listElem'>
-         <h2>Molécule Répertorier</h2><br>
+         <h2>Molécule Répertorier</h2>
+        <a href="{% url "newMolecule" %}"><button type="button">Ajouter une Molécule</button></a>
+        <br>
         {% for molecule in molecules %}
             {{ molecule.published_date }}
             <h2><a href="{% url "molecule" pk=molecule.pk %}">{{ molecule.moleculeName }}</a></h2>

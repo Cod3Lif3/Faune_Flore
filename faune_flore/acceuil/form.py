@@ -11,12 +11,6 @@ class ContactForm(forms.Form):
 	mail = forms.EmailField(label="Votre adresse e-mail")
 	renvoi = forms.BooleanField(help_text="Cochez si vous souhaitez obtenir une copie du mail envoyé.",required=False)
 
-class PlanteForm(forms.ModelForm):
-
-	class Meta:
-		model = Molecule
-		fields = ('speciesName',)
-
 class RegisterForm(UserCreationForm):
 	email = forms.EmailField()
 

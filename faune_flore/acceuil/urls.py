@@ -9,6 +9,7 @@ urlpatterns = [
 	path('molecule/<pk>/', views.molecule, name='molecule'),
 	path('upload/', views.upload, name = 'upload'),
 	path('register/', views.register, name='register'),
-	path('search/', views.search)
+	path('search/', views.search, name = 'search'),
+	path('contact/', views.contact, name = 'contact')
 	
 	]
