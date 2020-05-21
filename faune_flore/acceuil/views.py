@@ -5,14 +5,13 @@ from .models import Molecule
 from .form import ContactForm
 from .form import PlanteForm
 from django.contrib.auth import logout,authenticate,login
-from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.db.models import Count
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.views.generic import TemplateView
-from django.contrib.auth import authenticate, login, logout
+from .form import RegisterForm
 from django.http import *
 from django.conf import settings
 
@@ -52,5 +51,16 @@ def upload(request):
             	)
     return render(request, template,{})
 
+def register(response):
+    if response.method == "POST":
+        form = RegisterForm(response.POST)
+        if form.is_valid():
+            form.save()
+        return redirect("/accueil")
+    else:
+        form = RegisterForm()
 
+   
+
+    return render(response, "registration/register.html", {"form" : form})
 

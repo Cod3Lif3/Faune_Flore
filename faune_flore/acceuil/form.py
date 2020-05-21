@@ -1,6 +1,9 @@
 from django import forms
 from .models import Molecule
 from django.contrib.auth.models import User
+from django.contrib.auth import logout,authenticate,login
+from django.contrib.auth.forms import UserCreationForm
+
 
 class ContactForm(forms.Form):
 	sujet = forms.CharField(max_length=100)
@@ -13,6 +16,13 @@ class PlanteForm(forms.ModelForm):
 	class Meta:
 		model = Molecule
 		fields = ('speciesName',)
+
+class RegisterForm(UserCreationForm):
+	email = forms.EmailField()
+
+	class Meta:
+		model = User
+		fields = ["username", "email", "password1","password2"]
 		
 
 
