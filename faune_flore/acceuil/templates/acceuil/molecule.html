@@ -1,0 +1,20 @@
+﻿{% extends 'acceuil/base.html' %}
+    {% block content %}
+    <section>
+        {% if molecules.published_date %}
+
+        {% endif %}
+        <h4> Nom de la Molecule : {{ molecules.moleculeName }}</h4>
+        <h4>Espèces associés : {{ molecules.speciesName }}</h4>
+        <h4>{{ molecules.InChIKey }}</h4>
+        <h4>Formule : {{ molecules.moleculeFormula }}</h4>
+        <h4>Nombre Crc : {{ molecules.crcNumber }}</h4>
+        <h4>Accurate Mass : {{ molecules.accurateMass }}</h4>
+        <h4>Nombre Cas : {{ molecules.casNumber }}</h4>
+        <h4>Compound Type : {{ molecules.compoundType }}</h4>
+        <h4>Rotation Optique : {{molecules.opticalRotation }}</h4>
+        <h4>MolFileName : {{ molecules.molFileName }}</h4>
+
+
+    </section>
+    {% endblock %}
