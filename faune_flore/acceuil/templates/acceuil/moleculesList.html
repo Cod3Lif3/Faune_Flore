@@ -4,10 +4,11 @@
          <h2>Molécule Répertorier</h2><br>
         {% for molecule in molecules %}
             {{ molecule.published_date }}
-            <h2><a href="{% url "molecule" pk=molecule.pk %}">{{ molecule.speciesName }}</a></h2>
+            <h2><a href="{% url "molecule" pk=molecule.pk %}">{{ molecule.moleculeName }}</a></h2>
         {% endfor %}
     </section>
     <div class="pagination">
+        {% if molecules.has_previous or molecules.has_next %}
         {% if molecules.has_previous %}
         <a href="?page=1">&laquo; first</a>
         <a href="?page={{ molecules.previous_page_number }}"> previous </a>
@@ -18,6 +19,7 @@
         {% if molecules.has_next %}
         <a href="?page={{ molecules.next_page_number }}"> Next </a>
         <a href="?page={{ molecules.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
         {% endif %}
 
 

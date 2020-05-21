@@ -1,93 +1,359 @@
-/******************************************************************************/
-/********************************* MOLECULE ***********************************/
-/******************************************************************************/
+/*----------------------------------------------------------------------------------------
+	PAGE ELEMENTS
+----------------------------------------------------------------------------------------*/
 
-.molecule {
-    height: 550px;
-    width : 1200px;
-    
-    position: fixed;
-    top: 200px;
-    left: 110px;
-    
-    border-radius : 20px;
+
+
+/*****************************/
+/* Polices */
+/*****************************/
+
+
+/*****************************/
+/* General */
+/*****************************/
+
+/* Reset CSS */
+* { 
+	margin: 0px;
+	padding: 0px;
+    list-style : none;
+	}
+
+body {
+    background-color: #F8F8F8;
+    background-image: url("./../images/fond.jpg") ;
+    background-repeat: repeat-x;
 }
 
-.molecule article {
+/**************************************************************************************/
+/* Mise en page */
+/**************************************************************************************/
+
+/* Wrapper */
+.wrapper {
+    width : 100%;
+	margin: 0px auto 0px auto;
+	}
+
+/**************************************************************************************/
+  /* Mise en page HEADER  */
+/**************************************************************************************/
+
+header {
+/*    background-color : red;*/
+    height : 17vh;
+}
+#titre{
+    width: 100px;
+    height: 17vh;
+    position: relative;
+}
+h1 {
+    display : inline-block;
+   
+    position : relative;
+    top : 20px;
+    left : 400px;
+
+    width : 200px
+    
+    color : brown;
+    font-size : 60px;
+}
+
+a:visited
+{
+    color: black;
+}
+
+#logNav {
+    display : inline-block;
+    
+    position : relative;
+    left : 800px;
+    top : 10px;
+}
+
+#logNav li {
+    
+}
+
+header img {
+    width : 30px;
+}
+
+/**************************************************************************************/
+  /* Mise en page NAV  */
+/**************************************************************************************/
+nav {
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    position: sticky;
+    top: 0px;
+    
+   background: url("../images/transparent_4.png");
+    background-size : cover;
+}
+
+nav div {
+    display : inline-block;
+    vertical-align : top;
+}
+
+nav #menuD {
+    width : 400px;
+}
+
+#menuD ul li:hover ul 
+{
+    display: block;
+}
+
+#menuD li:hover ul li
+{
+    float: none;
+}
+
+#menuD li ul {
+    position: absolute;
+}
+
+nav form {
+    width : 600px;
+
+    margin : 6px 20px 0px 20px;
+}
+
+nav #hall-search {
+    width : 300px;
+    height : 30px;
+}
+
+nav ul{
+    list-style-type: none;
+}
+
+nav ul li{
+    float: left;
+    width: 25%;
+    text-align: center;
+    position: relative;
+}
+
+nav ul::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;
+    padding: 10px 0px;
+}
+
+nav a:hover{
+    color: orange;
+    border-bottom: 2px solid gold;
+}
+
+.sous{
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav > ul li:hover .sous{
+    display: block;
+}
+.sous li{
+    float: none;
+    width: 100%;
+    text-align: left;
+}
+.sous a{
+    padding: 10px;
+    border-bottom: none;
+}
+.sous a:hover{
+    border-bottom: none;
+    background-color: RGBa(200,200,200,0.1);
+}
+.deroulant > a::after{
+    content:" ▼";
+    font-size: 12px;
+}
+
+
+
+/**************************************************************************************/
+  /* Mise en page SECTION  */
+/**************************************************************************************/
+section {
+    display : inline-block;
+    vertical-align : top;
+
+    width : 900px;
+    
+    margin : 10px 50px;
+    
+    border-radius : 10px;
+    
+    background: url("../images/transparent_4.png");
+    background-size : cover;
+}
+
+.listElem {
+    width : 700px;
+}
+
+section h2 {
+    text-align : center;
+    
+    margin : 10px 0px 5px 0px;
+}
+
+section article {
+}
+
+/**************************************************************************************/
+  /* Mise en page MENU D'ACTUALITÉ  */
+/**************************************************************************************/
+
+#slideshow {
+    position: relative;         /* le parent positionné */
+    width: 700px;               /* limite en largeur (1 élément du slideshow) */
+    height: 310px;              /* limite en hauteur */
+    margin:  20px auto;
+    overflow: hidden;           /* on cache ce qui déborde */
+    
+
+}
+
+#sContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 450px;
+    margin: 0;
+    padding: 0;
+    
+    /*CSS3 keyframes animation*/
+    animation-name: AutoSlide;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+#sContent li {
+    display: inline;
+}
+
+.slide {
+    width: 500px;               /* limite en largeur (1 élément du slideshow) */
+    height: 300px;              /* limite en hauteur */
+}
+
+.page {
+    
+    width : 500px;
+    height : 300px;
+    
+    padding : 5px;
+    
+
+}
+
+@keyframes AutoSlide {
+    0%, 15%, 100% {
+        top: 0px; /*1ère image*/
+    }
+    35%, 50% {
+        top: -310px; /*2ème image*/
+    }
+    70%, 85% {
+        top: -620px; /*3ème image*/
+    }
+}
+
+/**************************************************************************************/
+  /* Mise en page ARTICLE  */
+/**************************************************************************************/
+
+section article {
+    
+    margin : 50px 10px;
+
+}
+
+
+
+
+/**************************************************************************************/
+  /* Mise en page ASIDE  */
+/**************************************************************************************/
+aside {
     display : inline-block;
     vertical-align : top;
     
-    height : 500px;
-    width : 590px;
+    width : 300px;
+    height : 50vh;
     
-    margin: 25px 20px;
-    padding : 10px 20px;
+    margin : 5vh 2vw;
+    padding : 5px;
     
-    border-style : none solid none none;
+    border-radius : 10px;
+    
+    background: url("../images/transparent_4.png");
+    background-size : cover;
 }
 
-#molecule_informations {
-    height : 380px;
-    
-    margin-bottom : 20px;
+aside article {
+    margin : 15px 5px;
 }
 
-#molecule_informations h3 {
-    padding-top : 10px;
+aside h4 {
+    padding : 10px center;
+    
+    text-align: center;
+    text-align: justify;
+    
+    color : white;
+}
+
+
+
+/**************************************************************************************/
+  /* Mise en page FOOTER  */
+/**************************************************************************************/
+
+footer {
+    background: url("../images/transparent_4.png");
+    background-size : cover;
+    
+    position: relative;
+    bottom : 0px;
+    
+    width : 100%;
+}
+
+footer li {
+    display : inline-block;
+    vertical-align : top;
+    
+    margin : 5px 60px;
+    padding : 0px 10px;
+    
     text-align: center;
 }
 
-
-#edit_informations {
-    border-radius : 5px;
-    
-    background-color : coral;
+footer p {
+    text-align: center;
 }
-
-#edit_informations button {
-    display : inline-block;
-    vertical-align: top;
-    
-    height: 30px;
-    width: 70px;
-    
-    margin: 10px;
-    
-    border-style : solid;
-    border-width : 2px;
-    border-radius : 5px;
-    
-    font-size : 15px;
-}
-
-#edit_informations p {
-    display : inline-block;
-    vertical-align: top;
-    
-    width : 400px;
-    
-    margin-left : 30px;
-    padding-top : 5px;
-    
-    text-align: right;
-    font-size: 12px;
-
-}
-
-.view_molecule {
-    height : 500px;
-    width : 480px;
-    
-    margin: 10px 20px;
-    
-    display : inline-block;
-    vertical-align : top;
-    
-    background-color : blue;
-}
-
-
-
-/******************************************************************************/
-/********************************* MOLECULE ***********************************/
-/******************************************************************************/

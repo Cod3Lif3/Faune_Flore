@@ -64,3 +64,8 @@ def register(response):
 
     return render(response, "registration/register.html", {"form" : form})
 
+def search(request):
+    query = request.GET['query']
+    molecules = Molecule.objects.filter(moleculeName__icontains=query)
+    paginator = Paginator(molecules, 50)
+    return render(request, 'acceuil/moleculesList.html', {'molecules' : molecules})
