@@ -1,0 +1,9 @@
+{% extends "acceuil/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit"> Register</button>
+    </form>"
+{% endblock %}
