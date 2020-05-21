@@ -48,9 +48,17 @@
                 </form>
             </div>
             <div>
-                <a href="{% url "connexion" %}">Connexion</a>
+                {% if user.is_authenticated %}
+                <h4>{{ user.username }}</h4>
+                <h4><a href="{% url "deconnexion" %}">Deconnexion</a></h4>
+                {% else %}
+                <h4><a href="{% url "connexion" %}">Sign In </a></h4>
+                <h4><a href="{% url "creation" %}">Sign Up</a></h4>
+                {% endif %}
             </div>
-          
+            
+
+
         </nav>
         {% block content %}
         {% endblock %}

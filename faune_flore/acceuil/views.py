@@ -5,6 +5,7 @@ from .models import Molecule
 from .form import ContactForm
 from .form import PlanteForm
 from .form import ConnexionForm
+from .form import CreationForm
 from django.contrib.auth import logout,authenticate,login
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -70,3 +71,16 @@ def upload(request):
                 speciesName = column[9]
             	)
     return render(request, template,{})
+
+def creation(request):
+    if request.method == "POST":
+       form = CreationForm(request.POST)
+       if form.is_valid():
+           user = form.save(commit=False)
+           user.save()
+           return redirect('accueil')
+    else:
+        form = CreationForm()
+
+    return render(request, 'acceuil/creation.html', {'form' : form})
+    

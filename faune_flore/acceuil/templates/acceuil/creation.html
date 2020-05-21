@@ -1,0 +1,21 @@
+﻿{% extends 'acceuil/base.html' %}
+    {% block content %}
+    <div>
+        <form action="{% url "creation" %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Crée un compte" />
+        </form>
+    </div>
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
