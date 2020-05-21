@@ -1,5 +1,6 @@
 from django import forms
 from .models import Molecule
+from django.contrib.auth.models import User
 
 class ContactForm(forms.Form):
 	sujet = forms.CharField(max_length=100)

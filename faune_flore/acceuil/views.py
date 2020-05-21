@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.db.models import Count
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 
 def accueil(request):
@@ -27,6 +28,28 @@ def moleculesList(request):
 def molecule(request, pk):
     molecules = get_object_or_404(Molecule, pk = pk)
     return render(request, 'acceuil/molecule.html', {'molecules' : molecules})
+
+def connexion(request):
+    error = False
+    
+    if request.method == "POST":
+        form = ConnexionForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = authenticate(username = username, password=password)
+            if user :
+                login(request, user)
+                return render(request, 'acceuil/accueil.html')
+            else :
+                error = True
+        else :
+            form=ConnexionForm()
+    return render(request, 'acceuil/connection.html',locals())
+
+def deconnexion(request):
+    logout(request)
+    return redirect(reverse(connexion))
 
 def upload(request):
     template = "acceuil/upload.html"
