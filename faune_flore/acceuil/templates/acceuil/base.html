@@ -14,7 +14,7 @@
     <meta charset='UTF-8'>
 
     <!-- Icône de l'onglet -->
-    <link rel='icon' type='image.png' href="{% static 'images/logo_site.jpg' %}" />
+    <link rel='shortcut icon' type='image.png' href="/static/images/icon2.png" />
 
     <!-- Titre de l'onglet -->
     <title></title>
@@ -23,8 +23,10 @@
 <body>
     <div class='wrapper'>
         <header>
-
-            <h1><a href="{% url "accueil" %}"> Yana Faune & Flore </a></h1>
+            <div id="logo">
+            <a href="{% url "accueil" %}"><img src="/static/images/icon2.png" border ="0" /></a>
+                </div>
+            <h1> Yana Faune & Flore </h1>
             <ul id="logNav">
                 <!--img src="./images/connection.png"/-->
 
@@ -35,7 +37,7 @@
             <div id="menuD">
                 <ul>
                     <li class="deroulant">
-                        <a href="."> Menu &ensp; </a>
+                        <a href="." class="mini_menu"> Menu &ensp; </a>
                         <ul class="sous">
                             <li><a href="{% url "accueil" %}">Accueil</a></li>
                             <li><a href="{% url "moleculesList" %}"> Flore </a></li>

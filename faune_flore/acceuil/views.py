@@ -2,6 +2,8 @@ import csv,io
 from .models import Molecule
 from .form import ContactForm
 from .form import RegisterForm
+from .form import NewMolForm
+from django.utils import timezone
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import logout,authenticate,login
@@ -86,3 +88,17 @@ def contact(request):
     else :
         form = ContactForm()
     return render(request,'acceuil/contacter.html',locals())
+
+
+@login_required
+def new_molecule(request):
+    if request.method == "POST":
+        form = NewMolForm(request.POST)
+        if form.is_valid():
+            molecules = form.save(commit = False)
+            molecules.published_date = timezone.now()
+            molecules.save()
+            return redirect('molecule', pk = molecules.pk)
+    else:
+        form = NewMolForm()
+    return render(request, 'acceuil/ajout.html', {'form' : form})

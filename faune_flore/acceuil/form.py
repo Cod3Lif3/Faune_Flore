@@ -17,6 +17,11 @@ class RegisterForm(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ["username", "email", "password1","password2"]
+
+class NewMolForm(forms.ModelForm):
+	class Meta:
+		model = Molecule
+		fields = ["InChIKey","moleculeName","moleculeFormula","crcNumber","speciesName","molFileName","accurateMass","casNumber","compoundType","opticalRotation"]
 		
 
 

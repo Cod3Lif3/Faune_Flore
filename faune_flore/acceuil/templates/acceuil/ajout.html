@@ -1,9 +1,10 @@
 ﻿{% extends "acceuil/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
             <section>
-                <form action="{% url "sujet_new" %}" method="post">
+                <form action="{% url "new_molecule" %}" method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {{ form|crispy }}
                     <input type="submit" value="Submit"/>
                 </form>
                   
