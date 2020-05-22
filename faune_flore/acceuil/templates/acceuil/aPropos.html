@@ -1,59 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-
-<html>
-    <!-- En tête -->
-    <head>
-        <!-- Fichiers CSS -->
-        <link rel='stylesheet' type='text/css' href="{% static 'css/web.css' %}" media='screen' />
-        
-        <!-- Fichiers Javascripts -->
-        <script type='text/javascript' src='./js/jquery-2.0.3.min.js'></script>
-        <script type='text/javascript' src='./js/web.js'></script>
-        
-        <!-- Encodage UTF8 pour les accents -->
-        <meta charset='UTF-8'>
-            
-            <!-- Icône de l'onglet -->
-             <link rel='icon' type='image.png' href="{% static 'images/logo_site.png' %}"/>
-            
-            <!-- Titre de l'onglet -->
-            <title>Yana Faune & Flore</title>
-            </head>
-    
-    
-    
-    <!-- Corps du document -->
-    <body>
-        <!-- Wrapper -->
-        <div class='wrapper'>
-            <header>
-                <h1><a href="{% url "page_acceuil" %}">Yana Faune & Flore </h1>
-                <ul id="logNav">
-                    <img src="./images/connection.png"/>
-                    <li><a href="{% url "connection" %}"> Connection </a></li>
-                </ul>
-            </header>
-            <nav>
-                <div id="menuD">
-                    <ul>
-                        <li class= "deroulant">
-                            <a href="#"> Menu &ensp; </a>
-                            <ul class="sous">
-                                <li><a href="{%url 'page_acceuil' %}"> Acceuil </a></li>
-                                <li><a href="{% url "listFaune" %}"> Faune </a></li>
-                                <li><a href="{% url "listFlore" %}"> Flore </a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div id="menuB">
-                    <form >
-                        <input id="hall-search" type="search" name="search"/>
-                        <input id="search-btn"  type="submit" value="Rechercher"/>
-                    </form>
-                </div>
-            </nav>
+﻿{% extends "acceuil/base.html" %}
+{% block content %}
             <section class='textInfo'>
                 <h2> A propos de nous </h2>
                 <article>
@@ -81,19 +27,8 @@
                     </p>
                 </article>
             </section>
-            <footer>
-                <ul>
-                    <li><a href="{% url "condition" %}"> Condition d'utilisation </a></li>
-                    <li><a href="{% url "confident" %}"> Confidentialité </a> </li>
-                    <li><a href="{% url "cookies" %}"> Cookies </a></li>
-                    <li><a href="{% url "aPropos" %}"> A propos </a></li>
-                    <li><a href="{% url "contact" %}"> Nous Contacter </a></li>
-                </ul>
-                <p> Les licences </p>
-            </footer>
-        </div>
-    </body>
-</html>
+{% endblock %}
+           
 
 
 

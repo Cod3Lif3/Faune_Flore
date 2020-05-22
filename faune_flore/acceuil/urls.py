@@ -11,6 +11,7 @@ urlpatterns = [
 	path('register/', views.register, name='register'),
 	path('search/', views.search, name = 'search'),
 	path('contact/', views.contact, name = 'contact'),
-	path('new/molecule/', views.new_molecule, name ='new_molecule')
+	path('new/molecule/', views.new_molecule, name ='new_molecule'),
+	path('aPropos/', views.aPropos, name = 'aPropos')
 	
 	]

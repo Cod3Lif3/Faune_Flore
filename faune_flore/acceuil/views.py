@@ -62,7 +62,7 @@ def register(response):
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
-        return redirect("/accueil")
+        return redirect("/")
     else:
         form = RegisterForm()
 
@@ -89,7 +89,6 @@ def contact(request):
         form = ContactForm()
     return render(request,'acceuil/contacter.html',locals())
 
-
 @login_required
 def new_molecule(request):
     if request.method == "POST":
@@ -102,3 +101,7 @@ def new_molecule(request):
     else:
         form = NewMolForm()
     return render(request, 'acceuil/ajout.html', {'form' : form})
+
+def aPropos(request):
+    return render(request, 'acceuil/aPropos.html')
+
