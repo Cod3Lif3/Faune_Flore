@@ -1,7 +1,7 @@
 ﻿{% extends 'acceuil/base.html' %}
     {% block content %}
     <section>
-
+        <a href="{% url "moleculesList" %}">Retour à la Liste</a>
         <h4> Nom de la Molecule : {{ molecules.moleculeName }}</h4>
         <p>Espèces associés : {{ molecules.speciesName }}</p>
         <p>{{ molecules.InChIKey }}</p>
