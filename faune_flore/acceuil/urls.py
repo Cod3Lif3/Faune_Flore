@@ -12,6 +12,7 @@ urlpatterns = [
 	path('search/', views.search, name = 'search'),
 	path('contact/', views.contact, name = 'contact'),
 	path('new/molecule/', views.new_molecule, name ='new_molecule'),
-	path('aPropos/', views.aPropos, name = 'aPropos')
+	path('aPropos/', views.aPropos, name = 'aPropos'),
+	path('edit/molecule/<pk>', views.edit_molecule, name = 'edit_molecule')
 	
 	]

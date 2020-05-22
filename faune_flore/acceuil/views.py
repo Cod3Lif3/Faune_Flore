@@ -1,24 +1,17 @@
 import csv,io
+from django.db import models
 from .models import Molecule
+from .form import NewMolForm
 from .form import ContactForm
 from .form import RegisterForm
-from .form import NewMolForm
 from django.utils import timezone
+from django.db.models import Count
 from django.shortcuts import redirect
+from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import logout,authenticate,login
 from django.contrib.auth.decorators import login_required
-
-
-
-
-from django.urls import reverse
-from django.db.models import Count
-from django.db import models
-from django.contrib.auth.models import User
-from django.core.paginator import Paginator
-from django.views.generic import TemplateView
-
 
 
 def accueil(request):
@@ -89,7 +82,7 @@ def contact(request):
         form = ContactForm()
     return render(request,'acceuil/contacter.html',locals())
 
-@login_required
+
 def new_molecule(request):
     if request.method == "POST":
         form = NewMolForm(request.POST)
@@ -101,6 +94,21 @@ def new_molecule(request):
     else:
         form = NewMolForm()
     return render(request, 'acceuil/ajout.html', {'form' : form})
+
+
+def edit_molecule(request, pk):
+    molecules = get_object_or_404(Molecule, pk=pk)
+    if request.method == "POST":
+        form = NewMolForm(request.POST, instance=molecules)
+        if form.is_valid():
+            molecules = form.save(commit = False)
+            molecules.published_date = timezone.now()
+            molecules.save()  
+            return redirect('molecule', pk = molecules.pk)
+    else:
+        form = NewMolForm(instance=molecules)
+    return render(request, 'acceuil/ajout.html', {'form' : form})
+
 
 def aPropos(request):
     return render(request, 'acceuil/aPropos.html')

@@ -1,12 +1,16 @@
 ﻿{% extends "acceuil/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-            <section>
-                <form action="{% url "new_molecule" %}" method="post">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <input type="submit" value="Submit"/>
-                </form>
-                  
-            </section>
+    <section>
+        {% if user.is_authenticated %}
+            <form action="{% url "new_molecule" %}" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Submit" />
+            </form>
+        {% else %}
+            Vous devez être <a href="{% url "login" %}">connecter</a>
+        {% endif %}
+
+    </section>
 {% endblock %}

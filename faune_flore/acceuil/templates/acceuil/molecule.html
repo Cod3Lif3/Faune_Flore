@@ -1,20 +1,21 @@
 ﻿{% extends 'acceuil/base.html' %}
     {% block content %}
     <section>
-            
-                <h4> Nom de la Molecule : {{ molecules.moleculeName }}</h4>
-                <p>Espèces associés : {{ molecules.speciesName }}</p>
-                <p>{{ molecules.InChIKey }}</p>
-                <p>Formule : {{ molecules.moleculeFormula }}</p>
-                <p>Nombre Crc : {{ molecules.crcNumber }}</p>
-                <p>Accurate Mass : {{ molecules.accurateMass }}</p>
-                <p>Nombre Cas : {{ molecules.casNumber }}</p>
-                <p>Compound Type : {{ molecules.compoundType }}</p>
-                <p>Rotation Optique : {{molecules.opticalRotation }}</p>
-                <p>MolFileName : {{ molecules.molFileName }}</p>
-                {% if molecules.published_date %}
-                {{ molecules.published_date }}
-                {% endif %}
-            
+
+        <h4> Nom de la Molecule : {{ molecules.moleculeName }}</h4>
+        <p>Espèces associés : {{ molecules.speciesName }}</p>
+        <p>{{ molecules.InChIKey }}</p>
+        <p>Formule : {{ molecules.moleculeFormula }}</p>
+        <p>Nombre Crc : {{ molecules.crcNumber }}</p>
+        <p>Accurate Mass : {{ molecules.accurateMass }}</p>
+        <p>Nombre Cas : {{ molecules.casNumber }}</p>
+        <p>Compound Type : {{ molecules.compoundType }}</p>
+        <p>Rotation Optique : {{molecules.opticalRotation }}</p>
+        <p>MolFileName : {{ molecules.molFileName }}</p>
+        {% if molecules.published_date %}
+        {{ molecules.published_date }}
+        {% endif %}
+        <a class="btn btn-default" href="{% url 'edit_molecule' pk=molecules.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+
     </section>
     {% endblock %}
